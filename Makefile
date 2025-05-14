@@ -2,7 +2,7 @@ GO ?= $(shell which go)
 OS ?= $(shell $(GO) env GOOS)
 ARCH ?= $(shell $(GO) env GOARCH)
 
-IMAGE_NAME := "docker-repo.k3s.kalverboer.net/cert_manager_webhook_mijnhost"
+IMAGE_NAME := "webhook"
 IMAGE_TAG := "latest"
 
 OUT := $(shell pwd)/_out
