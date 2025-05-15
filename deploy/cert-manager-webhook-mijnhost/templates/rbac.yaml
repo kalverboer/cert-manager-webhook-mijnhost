@@ -89,3 +89,41 @@ subjects:
     kind: ServiceAccount
     name: {{ .Values.certManager.serviceAccountName }}
     namespace: {{ .Values.certManager.namespace }}
+---
+# Grant webhook access to secret
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "cert-manager-webhook-mijnhost.fullname" . }}:secret-access
+  labels:
+    app: {{ include "cert-manager-webhook-mijnhost.name" . }}
+    chart: {{ include "cert-manager-webhook-mijnhost.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+rules:
+  - apiGroups: [""]
+    resources:
+      - 'secrets'
+    verbs:
+      - 'get'
+      - 'watch'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "cert-manager-webhook-mijnhost.fullname" . }}:secret-access
+  labels:
+    app: {{ include "cert-manager-webhook-mijnhost.name" . }}
+    chart: {{ include "cert-manager-webhook-mijnhost.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "cert-manager-webhook-mijnhost.fullname" . }}:secret-access
+subjects:
+  - apiGroup: ""
+    kind: ServiceAccount
+    name: {{ .Values.certManager.serviceAccountNameSecret }}
+    namespace: {{ .Values.certManager.namespace }}
+---

@@ -11,9 +11,10 @@ groupName: acme.mijnhost
 certManager:
   namespace: cert-manager
   serviceAccountName: cert-manager
+  serviceAccountNameSecret: cert-manager-webhook-mijnhost
 
 image:
-  repository: cert_manager_webhook_mijnhost
+  repository: ghcr.io/kalverboer/cert-manager-webhook-mijnhost
   tag: latest
   pullPolicy: Always
 
