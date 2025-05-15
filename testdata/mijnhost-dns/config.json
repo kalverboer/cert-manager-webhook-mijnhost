@@ -1,0 +1,6 @@
+{
+    "applicationSecretRef": {
+        "name": "mijnhost-api-key",
+        "key": "applicationSecret"
+	}
+}
