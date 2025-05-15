@@ -13,7 +13,7 @@ I made this because nothing existed yet for mijn.host DNS.
 This webhook can be installed with Helm.
 
 ```bash
-helm install cert-manager-webhook-mijnhost ./deploy/cert-manager-webhook-mijnhost
+helm -n cert-manager install cert-manager-webhook-mijnhost ./deploy/cert-manager-webhook-mijnhost
 ```
 Please change the namespace and serviceAccountNames in values.yml when using a different deployment name or namespace.
 
