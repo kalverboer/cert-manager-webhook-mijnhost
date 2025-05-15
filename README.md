@@ -32,7 +32,7 @@ data:
 ```
 
 2. Create issuer
-I used a ClusterIssuer in this exampl.e
+I used a ClusterIssuer in this example
 
 ```yaml
 apiVersion: cert-manager.io/v1
